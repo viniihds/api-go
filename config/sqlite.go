@@ -2,6 +2,7 @@ package config
 
 import (
 	"os"
+	"log"
 
 	"github.com/viniihds/api-go/schemas"
 	"gorm.io/driver/sqlite"
@@ -11,9 +12,13 @@ import (
 func InitializeSQLite() (*gorm.DB, error) {
 	logger := GetLogger("sqlite")
 	dbPath := "./db/main.db"
+
 	// Check if the database file exists
 	_, err := os.Stat(dbPath)
+
+	log.Print("22222 seeeee")
 	if os.IsNotExist(err) {
+		log.Print("eeeee")
 		logger.Info("database file not found, creating...")
 		// Create the database file and directory
 		err = os.MkdirAll("./db", os.ModePerm)
@@ -26,7 +31,7 @@ func InitializeSQLite() (*gorm.DB, error) {
 		}
 		file.Close()
 	}
-
+	
 	// Criando DB e conectando
 	db, err := gorm.Open(sqlite.Open(dbPath), &gorm.Config{})
 	if err != nil {

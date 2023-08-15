@@ -14,6 +14,7 @@ func main() {
 	//Inialização Router
 	router.Initialize()
 
+	// log.Fatal("oioioio")
 
 	logger = config.GetLogger("main")
 	//Inialização Configs
