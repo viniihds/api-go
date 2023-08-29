@@ -11,5 +11,5 @@ router := gin.Default()
 initializeRoutes(router)
 
 // Roda o Servidor
- go router.Run(":8080")
+	router.Run(":8080")
 }
